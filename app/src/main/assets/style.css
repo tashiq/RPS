@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Nerko+One&display=swap');
+@font-face{
+    font-family: 'montserrat';
+    src: 'fonts/montserrat.ttf';
+}
+
+body{
+    font-size: 12px;
+    font-family: "montserrat", sans-serif;
+}
+*{
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+.dev-img{
+    width: 100%;
+    padding: 8px 12px;
+}
+.page-title{
+    font-family: 'Nerko One', cursive;
+    font-weight: 300;
+    font-size: 24px;
+    letter-spacing: 5px;
+}
+.sub-title{
+    margin: 20px 12px 5px 9px;
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'Nerko One', cursive;
+    letter-spacing: 4px;
+
+}
+iframe{
+    padding: 8px 12px;
+    width: 100%;
+}
