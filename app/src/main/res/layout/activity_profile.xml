@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E7FAEB"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".Profile">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/profile_background"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingTop="15dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="15dp">
+
+        <LinearLayout
+            android:id="@+id/register_image_container"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/circle_background"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="105dp"
+                android:layout_height="120dp"
+                app:srcCompat="@drawable/profile" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/email_box"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="fill_parent"
+                android:background="@drawable/input_curve_left"
+                android:gravity="center_vertical"
+                android:text="User Name"
+                android:textColor="#050509"
+                android:textSize="13sp" />
+
+
+            <TextView
+                android:id="@+id/profile_user_name"
+                android:layout_width="200dp"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/input_curve_right"
+                android:gravity="center_vertical"
+                android:text="Tashique"
+                android:textColor="#050509"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/name_box"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="fill_parent"
+                android:background="@drawable/input_curve_left"
+                android:gravity="center_vertical"
+                android:text="Name"
+                android:textColor="#050509"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:id="@+id/name_edit_container"
+                android:layout_width="200dp"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/input_curve_right"
+                android:gravity="center_vertical"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/profile_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="9"
+                    android:gravity="center_vertical"
+                    android:text="Fahim Foisal"
+                    android:textColor="#050509"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toEndOf="@+id/textView"
+                    app:layout_constraintTop_toBottomOf="@+id/register_image_container" />
+
+                <ImageButton
+                    android:id="@+id/name_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:src="@drawable/edit" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/name_check_container"
+                android:visibility="gone"
+                android:layout_width="200dp"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/input_curve_right"
+                android:gravity="center_vertical"
+                android:weightSum="10">
+
+                <EditText
+                    android:id="@+id/profile_name_edit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="9"
+                    android:gravity="center_vertical"
+                    android:textColor="#050509"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toEndOf="@+id/textView"
+                    app:layout_constraintTop_toBottomOf="@+id/register_image_container" />
+
+                <ImageButton
+                    android:id="@+id/name_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:src="@drawable/icon_check" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/name_box"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="fill_parent"
+                android:background="@drawable/input_curve_left"
+                android:gravity="center_vertical"
+                android:text="Email"
+                android:textColor="#050509"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:id="@+id/email_edit_container"
+                android:layout_width="200dp"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/input_curve_right"
+                android:gravity="center_vertical"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/profile_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="9"
+                    android:gravity="center_vertical"
+                    android:text="fahim.csecu@gmail.com"
+                    android:textColor="#050509"
+                    android:textSize="13sp" />
+
+                <ImageButton
+                    android:id="@+id/email_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:src="@drawable/edit" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/email_check_container"
+                android:visibility="gone"
+                android:layout_width="200dp"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/input_curve_right"
+                android:gravity="center_vertical"
+                android:weightSum="10">
+
+                <EditText
+                    android:id="@+id/profile_email_edit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="9"
+                    android:gravity="center_vertical"
+                    android:textColor="#050509"
+                    android:textSize="13sp" />
+
+                <ImageButton
+                    android:id="@+id/email_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:src="@drawable/icon_check" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/name_box"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="fill_parent"
+                android:background="@drawable/input_curve_left"
+                android:gravity="center_vertical"
+                android:text="Phone"
+                android:textColor="#050509"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:id="@+id/phone_edit_container"
+                android:layout_width="200dp"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/input_curve_right"
+                android:gravity="center_vertical"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/profile_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="9"
+                    android:gravity="center_vertical"
+                    android:text="01974261254"
+                    android:textColor="#050509"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toEndOf="@+id/textView"
+                    app:layout_constraintTop_toBottomOf="@+id/register_image_container" />
+
+                <ImageButton
+                    android:id="@+id/phone_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:src="@drawable/edit" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/phone_check_container"
+                android:visibility="gone"
+                android:layout_width="200dp"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/input_curve_right"
+                android:gravity="center_vertical"
+                android:weightSum="10">
+
+                <EditText
+                    android:id="@+id/profile_phone_edit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="9"
+                    android:gravity="center_vertical"
+                    android:textColor="#050509"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toEndOf="@+id/textView"
+                    app:layout_constraintTop_toBottomOf="@+id/register_image_container" />
+
+                <ImageButton
+                    android:id="@+id/phone_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:src="@drawable/icon_check" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/name_box"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="fill_parent"
+                android:background="@drawable/input_curve_left"
+                android:gravity="center_vertical"
+                android:text="Country"
+                android:textColor="#050509"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:id="@+id/country_edit_container"
+                android:layout_width="200dp"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/input_curve_right"
+                android:gravity="center_vertical"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/profile_country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="9"
+                    android:gravity="center_vertical"
+                    android:text="Bangladesh"
+                    android:textColor="#050509"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toEndOf="@+id/textView"
+                    app:layout_constraintTop_toBottomOf="@+id/register_image_container" />
+
+                <ImageButton
+                    android:id="@+id/country_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:src="@drawable/edit" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/country_check_container"
+                android:visibility="gone"
+                android:layout_width="200dp"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/input_curve_right"
+                android:gravity="center_vertical"
+                android:weightSum="10">
+
+                <EditText
+                    android:id="@+id/profile_country_edit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="9"
+                    android:gravity="center_vertical"
+                    android:textColor="#050509"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toEndOf="@+id/textView"
+                    app:layout_constraintTop_toBottomOf="@+id/register_image_container" />
+
+                <ImageButton
+                    android:id="@+id/country_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:src="@drawable/icon_check" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/name_box"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="fill_parent"
+                android:background="@drawable/input_curve_left"
+                android:gravity="center_vertical"
+                android:text="Date of Birth"
+                android:textColor="#050509"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:id="@+id/dob_edit_container"
+                android:layout_width="200dp"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/input_curve_right"
+                android:gravity="center_vertical"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/profile_dob"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="9"
+                    android:gravity="center_vertical"
+                    android:text="12/1/2022"
+                    android:textColor="#050509"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toEndOf="@+id/textView"
+                    app:layout_constraintTop_toBottomOf="@+id/register_image_container" />
+
+                <ImageButton
+                    android:id="@+id/dob_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:src="@drawable/edit" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dob_check_container"
+                android:visibility="gone"
+                android:layout_width="200dp"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/input_curve_right"
+                android:gravity="center_vertical"
+                android:weightSum="10">
+
+                <EditText
+                    android:id="@+id/profile_dob_edit_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="9"
+                    android:gravity="center_vertical"
+                    android:textColor="#050509"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toEndOf="@+id/textView"
+                    app:layout_constraintTop_toBottomOf="@+id/register_image_container" />
+
+                <ImageButton
+                    android:id="@+id/dob_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:src="@drawable/icon_check" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/profile_logout_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_curve"
+            android:text="Logout" />
+
+    </LinearLayout>
+</LinearLayout>

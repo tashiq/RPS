@@ -1,0 +1,256 @@
+package com.example.rps;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+
+public class Database extends SQLiteOpenHelper {
+    private static final String DATABASE_NAME = "Rock Paper Scissor";
+    private static int DATABASE_VERSION = 17;
+    private Context context;
+    private static final String SHARED_PREF_USER = "User Details";
+    //    review table
+    private static final String REVIEW = "reviews";
+    private static final String REVIEW_ID = "review_id";
+    private static final String REVIEW_TITLE = "review_title";
+    private static final String REVIEW_DESCRIPTION = "review_description";
+    private static final String REVIEW_LIKE_COUNT = "review_like";
+    private static final String REVIEW_DISLIKE_COUNT = "review_dislike";
+    private static final String REVIEW_DATE = "review_date";
+    private static final String REVIEW_ER = "reviewer";
+    private static final String REVIEW_RATING = "rating";
+    private static final String create_review_table = "CREATE TABLE "
+            + REVIEW + "(" + REVIEW_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + REVIEW_ER + " VARCHAR(100), "
+            + REVIEW_TITLE + " TEXT, "
+            + REVIEW_DATE + " VARCHAR(20), "
+            + REVIEW_DESCRIPTION + " TEXT,"
+            + REVIEW_RATING + " INTEGER DEFAULT 0, "
+            + REVIEW_LIKE_COUNT + " INTEGER DEFAULT 0, "
+            + REVIEW_DISLIKE_COUNT + " INTEGER DEFAULT 0);";
+
+    //    user table
+    private static final String USER = "users";
+    private static final String USER_NAME = "name";
+    private static final String USER_USER_NAME = "user_name";
+    private static final String USER_LOCATION = "location";
+    private static final String USER_REGISTRATION_DATE = "registration";
+    private static final String USER_WIN = "win_count";
+    private static final String USER_LOSE = "lose_count";
+    private static final String USER_COIN = "COIN";
+    private static final String USER_DoB = "user_DoB";
+    private static final String USER_PHONE = "user_phone";
+    private static final String USER_EMAIL = "user_email";
+    private static final String USER_PASSWORD = "user_password";
+    private static final String USER_PIC = "user_pic";
+    private static final String create_user_table = "CREATE TABLE "
+            + USER + "(" + USER_USER_NAME + " VARCHAR(100) PRIMARY KEY,"
+            + USER_NAME + " VARCHAR(100), "
+            + USER_LOCATION + " VARCHAR(200), "
+            + USER_EMAIL + " VARCHAR(200), "
+            + USER_PASSWORD + " VARCHAR(50) NOT NULL, "
+            + USER_REGISTRATION_DATE + " VARCHAR(20) default CURRENT_DATE, "
+            + USER_WIN + " INTEGER DEFAULT 0, "
+            + USER_PIC + " VARBINARY(15000) DEFAULT null, "
+            + USER_LOSE + " INTEGER DEFAULT 0, "
+            + USER_PHONE + " VARCHAR(20) DEFAULT null, "
+            + USER_COIN + " INTEGER DEFAULT 0, "
+            + USER_DoB + " VARCHAR(20));";
+
+    public Database(@Nullable Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
+//        Toast.makeText(context, "Database Connected", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+//        Toast.makeText(context, "onCreate is called", Toast.LENGTH_SHORT).show();
+        try {
+            db.execSQL(create_review_table);
+            db.execSQL(create_user_table);
+//            Toast.makeText(context, "Database is created.", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(context, "Error: " + e, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+        try {
+            db.execSQL("DROP TABLE IF EXISTS " + USER);
+            db.execSQL("DROP TABLE IF EXISTS " + REVIEW);
+            Toast.makeText(context, "Table Dropped", Toast.LENGTH_SHORT).show();
+            onCreate(db);
+        } catch (Exception e) {
+            Toast.makeText(context, "Failed to delete table.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    //    inserting new review
+    public void addNewReview(String reviewer, String review_date, String review_title, String review_description, int rating) {
+        ContentValues container = new ContentValues();
+//        initializing values
+        container.put(REVIEW_ER, reviewer);
+        container.put(REVIEW_DATE, review_date);
+        container.put(REVIEW_TITLE, review_title);
+        container.put(REVIEW_DESCRIPTION, review_description);
+        container.put(REVIEW_RATING, rating);
+//        making query ready
+        SQLiteDatabase db = this.getWritableDatabase();
+        try {
+            long a = db.insert(REVIEW, null, container);
+            Toast.makeText(context, "Review Added" + a, Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(context, "Error: " + e, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public ArrayList<Reviews> getAllCourses() {
+        ArrayList<Reviews> reviews = new ArrayList<>();
+//        Toast.makeText(context, "Loading all reviews", Toast.LENGTH_SHORT).show();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor reviewCursor = db.rawQuery("SELECT * FROM " + REVIEW, null);
+//        Toast.makeText(context, reviewCursor.getCount() + " reviews found", Toast.LENGTH_SHORT).show();
+        if (reviewCursor.moveToFirst()) {
+            do {
+                String rating_temp, like_temp, dislike_temp;
+                if (reviewCursor.getString(5) == null) {
+                    rating_temp = "0";
+                } else {
+                    rating_temp = reviewCursor.getString(5);
+                }
+
+                if (reviewCursor.getString(6) == null) {
+                    like_temp = "0";
+                } else {
+                    like_temp = reviewCursor.getString(6);
+                }
+                if (reviewCursor.getString(7) == null) {
+                    dislike_temp = "0";
+                } else {
+                    dislike_temp = reviewCursor.getString(7);
+                }
+                reviews.add(new Reviews(
+                        reviewCursor.getString(1),
+                        reviewCursor.getString(2),
+                        reviewCursor.getString(3),
+                        reviewCursor.getString(4),
+                        Integer.parseInt(rating_temp),
+                        Integer.parseInt(like_temp),
+                        Integer.parseInt(dislike_temp)
+                ));
+//                Toast.makeText(context, reviewCursor.getColumnName(7) , Toast.LENGTH_SHORT).show();
+            } while (reviewCursor.moveToNext());
+        }
+        return reviews;
+    }
+    public boolean UploadImage(byte[] bmp, String userName){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "UPDATE " + USER + " SET " + USER_PIC + " = \"" + bmp + "\" WHERE " + USER_USER_NAME + " = \"" + userName + "\";";
+        Log.i("babel", "UploadImage: " + bmp.length);
+
+        try{
+            Cursor cursor = db.rawQuery(query, null);
+            Log.i("babel", "UploadImage: " + cursor);
+            return true;
+        }catch (Exception e){
+            Log.i("babel", "UploadImage: " + e);
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+    public boolean userNameVerification(String userName) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor result = db.rawQuery("SELECT * FROM " + USER + " WHERE " + USER_USER_NAME + " = \"" + userName + "\"", null);
+        return result.moveToFirst();
+    }
+
+    public boolean emailVerification(String email) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor result = db.rawQuery("SELECT * FROM " + USER + " WHERE " + USER_EMAIL + " = \"" + email + "\"", null);
+        return result.moveToFirst();
+    }
+
+    public boolean loginValidation(String key, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        try {
+            String getValidate = "SELECT * FROM " + USER
+                    + " WHERE (" + USER_USER_NAME + " = \"" + key + "\") AND " + USER_PASSWORD + " = \"" + password + "\";";
+            Cursor userCursor = db.rawQuery(getValidate, null);
+            if (userCursor.moveToFirst()) {
+                SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_USER, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                for(int i = 0; i<userCursor.getColumnCount(); i++){
+                    String name = userCursor.getColumnName(i);
+                    String value = userCursor.getString(i);
+                    editor.putString(name, value);
+                }
+
+                editor.commit();
+            }
+            return userCursor.moveToFirst();
+        } catch (Exception e) {
+            Toast.makeText(context, "exception" + e, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+    }
+
+    public void updateUser(String columnName, String columnValue, String key){
+        String query = "UPDATE " + USER+ " SET \""
+                + columnName + "\" = \"" + columnValue + "\" WHERE \""+USER_USER_NAME + "\" = \"" + key + "\" ;";
+        SQLiteDatabase db = this.getWritableDatabase();
+        try{
+            Log.i("babel", "updateUser: " + query);
+            db.execSQL(query);
+        }catch (Exception e){
+            e.printStackTrace();
+            Toast.makeText(context, "Failed to update.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public boolean addNewUser(String userName, String name, String email, String country, String dob, String password, String phone) {
+        ContentValues container = new ContentValues();
+//        initializing values
+        container.put(USER_NAME, name);
+        container.put(USER_USER_NAME, userName);
+        container.put(USER_EMAIL, email);
+        container.put(USER_LOCATION, country);
+        container.put(USER_DoB, dob);
+        container.put(USER_PASSWORD, password);
+        container.put(USER_PHONE, phone);
+//        making query ready
+        SQLiteDatabase db = this.getWritableDatabase();
+        try {
+            long a = db.insert(USER, null, container);
+            SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_USER, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(USER_NAME, name);
+            editor.putString(USER_USER_NAME, userName);
+            editor.putString(USER_EMAIL, email);
+            editor.putString(USER_LOCATION, country);
+            editor.putString(USER_DoB, dob);
+            editor.putString(USER_PASSWORD, password);
+            editor.putString(USER_PHONE, phone);
+            editor.commit();
+            Toast.makeText(context, "Registration Successful", Toast.LENGTH_SHORT).show();
+            return true;
+
+        } catch (Exception e) {
+            Toast.makeText(context, "Error: " + e, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+    }
+}
