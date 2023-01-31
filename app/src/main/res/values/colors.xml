@@ -9,4 +9,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="golden">#FFD700</color>
     <color name="gray">#D6D6D6</color>
+    <color name="home_icons">#020242</color>
+    <color name="cyan">#00FFFF</color>
+    <color name="warn">#FF5722</color>
+    <color name="error">#ED4344</color>
+    <color name="primary">#025F91</color>
+    <color name="secondary">#0185C3</color>
 </resources>
