@@ -22,9 +22,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_login);
         SharedPreferences sharedPreferences = getSharedPreferences("User Details", MODE_PRIVATE);
         db = new Database(getApplicationContext());
-        if (sharedPreferences.contains("user_name")) {
-            navigate();
-        }
         loginBtn = findViewById(R.id.login_btn);
         loginBtn.setOnClickListener(this);
         findViewById(R.id.to_register).setOnClickListener(this);

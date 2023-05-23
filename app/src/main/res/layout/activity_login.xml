@@ -53,7 +53,7 @@
             android:layout_marginStart="5dp"
             android:background="@drawable/input_curve_right"
             android:gravity="center_vertical"
-            android:text="Tashique"
+            android:hint="User_Name"
             android:textColor="#050509"
             android:textSize="13sp"/>
     </LinearLayout>
@@ -83,6 +83,7 @@
             android:gravity="center_vertical"
             android:inputType="textPassword"
             android:maxLines="2"
+            android:hint="Password"
             android:minLines="1"
             android:textColor="#050509"
             android:textSize="13sp"

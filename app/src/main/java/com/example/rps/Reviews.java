@@ -1,7 +1,7 @@
 package com.example.rps;
 
 public class Reviews {
-    public Reviews(String reviewer, String review_title, String review_date, String review_description, int review_rating, int review_like, int review_dislike) {
+    public Reviews(int review_id, String reviewer, String review_title, String review_date, String review_description, int review_rating, int review_like, int review_dislike) {
         this.review_date = review_date;
         this.reviewer = reviewer;
         this.review_title = review_title;
@@ -9,6 +9,11 @@ public class Reviews {
         this.review_like = review_like;
         this.review_rating = review_rating;
         this.review_dislike = review_dislike;
+        this.review_id = review_id;
+    }
+
+    public int getReview_id() {
+        return review_id;
     }
 
     public String getReview_date() {
@@ -74,4 +79,5 @@ public class Reviews {
     private int review_like;
     private int review_rating;
     private int review_dislike;
+    private int review_id;
 }

@@ -72,7 +72,7 @@ public class ReviewPage extends AppCompatActivity implements View.OnClickListene
 
     protected void getAllCourses() {
 //        Calling database function.
-        reviews = database.getAllCourses();
+//        reviews = database.getAllReviews();
 //        getting container
         reviewContainer = findViewById(R.id.reviewContainer);
         reviewContainer.removeAllViews();
@@ -127,6 +127,7 @@ public class ReviewPage extends AppCompatActivity implements View.OnClickListene
                         }
                     }
                 });
+
                 dislikebtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

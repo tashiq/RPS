@@ -22,6 +22,8 @@
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/drawable/input_curve_right.xml" value="0.1" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/drawable/profile_background.xml" value="0.1" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/drawable/round_border.xml" value="0.1" />
+        <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/drawable/solid_btn.xml" value="0.1" />
+        <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/drawable/solid_btn_reverse.xml" value="0.1" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_about_us.xml" value="0.1859375" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_add_review.xml" value="0.18" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_game_page.xml" value="0.22" />
@@ -30,11 +32,19 @@
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_profile.xml" value="0.25" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_register.xml" value="0.30687830687830686" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_review_page.xml" value="0.25" />
+        <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_review_second.xml" value="0.1" />
+        <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_reviews_page.xml" value="0.22" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_settings_page.xml" value="0.16417272338606242" />
+        <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_single_review.xml" value="0.22" />
+        <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_single_review_page.xml" value="0.25" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_splash.xml" value="0.2" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_tutorial.xml" value="0.2" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/circle_background.xml" value="0.1" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/circlebackground.xml" value="0.1" />
+        <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/comment.xml" value="0.25" />
+        <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/fragment_add_review.xml" value="0.22" />
+        <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/fragment_all__reviews.xml" value="0.1" />
+        <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/fragment_all_reviews.xml" value="0.1" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/home_page_icon.xml" value="0.25" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/home_page_items.xml" value="0.16417272338606242" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/home_page_items_icon.xml" value="0.1" />
@@ -42,6 +52,7 @@
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/navigation.xml" value="0.1" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/navigation_header.xml" value="0.1" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/review.xml" value="0.5" />
+        <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/spinner_layout.xml" value="0.1" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/menu/home_menu.xml" value="0.25" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/menu/rps_menu.xml" value="0.2" />
       </map>

@@ -59,11 +59,45 @@
             android:layout_marginStart="5dp"
             android:background="@drawable/input_curve_right"
             android:gravity="center_vertical"
-            android:text="Tashique"
+            android:hint="User_name"
             android:textColor="#050509"
             app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/register_image_container" />
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/email_box"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:background="@drawable/input_curve_left"
+            android:gravity="center_vertical"
+            android:text="Email"
+            android:textColor="#050509"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/register_email"
+            android:layout_width="200dp"
+            android:textSize="13sp"
+            android:layout_height="fill_parent"
+            android:inputType="textMultiLine"
+            android:hint="example@xyz.com"
+            android:maxLines="2"
+            android:minLines="1"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/input_curve_right"
+            android:gravity="center_vertical"
+            android:textColor="#050509" />
+    </LinearLayout>
+
+    <!--
 
     <LinearLayout
         android:id="@+id/name_box"
@@ -93,46 +127,10 @@
             android:layout_marginStart="5dp"
             android:background="@drawable/input_curve_right"
             android:gravity="center_vertical"
-            android:text="Fahim Foisal"
             android:textColor="#050509" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/email_box"
-        android:layout_marginBottom="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/country_box"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="fill_parent"
-            android:background="@drawable/input_curve_left"
-            android:gravity="center_vertical"
-            android:text="Email"
-            android:textColor="#050509"
-            android:textSize="13sp" />
-
-        <EditText
-            android:id="@+id/register_email"
-            android:layout_width="200dp"
-            android:textSize="13sp"
-            android:layout_height="fill_parent"
-            android:inputType="textMultiLine"
-            android:maxLines="2"
-            android:minLines="1"
-            android:layout_marginStart="5dp"
-            android:background="@drawable/input_curve_right"
-            android:gravity="center_vertical"
-            android:text="fahim.csecu@gmail.com"
-            android:textColor="#050509" />
-
-
-    </LinearLayout>
 <LinearLayout
     android:layout_marginBottom="10dp"
     android:layout_width="wrap_content"
@@ -194,7 +192,6 @@
             android:textSize="13sp" />
 
     </LinearLayout>
-
     <LinearLayout
         android:id="@+id/dob_box"
         android:layout_width="wrap_content"
@@ -246,6 +243,8 @@
                 android:padding="9dp" />
         </LinearLayout>
     </LinearLayout>
+
+-->
     <LinearLayout
         android:id="@+id/password_toggle_box"
         android:layout_width="wrap_content"
@@ -273,7 +272,7 @@
                 android:layout_marginStart="5dp"
                 android:background="@drawable/input_curve_right"
                 android:gravity="center_vertical"
-                android:text="Tashique"
+                android:hint="Password"
                 android:textColor="#050509"
                 />
 

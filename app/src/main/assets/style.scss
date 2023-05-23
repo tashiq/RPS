@@ -1,4 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Nerko+One&display=swap');
+$mon-font: "montserrat";
+$nerko_font: 'Nerko One', cursive;
+$medium-weight: 300;
+
+%font_and_weight {
+    font-weight: 300;
+    font-family: 'Nerko One',
+        cursive;
+}
 
 @font-face {
     font-family: 'montserrat';
@@ -7,31 +16,32 @@
 
 body {
     font-size: 12px;
-    font-family: "montserrat", sans-serif;
+    font-family: $mon-font;
 }
 
 * {
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: $mon-font;
 }
 
 .dev-img {
-    width: 100px;
+    width: 100%;
     padding: 8px 12px;
 }
 
 .page-title {
-    font-family: 'Nerko One', cursive;
-    font-weight: 300;
+    @extend %font_and_weight;
     font-size: 24px;
     letter-spacing: 5px;
 }
 
 .sub-title {
+    font-weight: 300;
+    font-family: 'Nerko One',
+        cursive;
+    // @extend %font_and_weight;
     margin: 20px 12px 5px 9px;
     font-size: 18px;
-    font-weight: 300;
-    font-family: 'Nerko One', cursive;
     letter-spacing: 4px;
 
 }
@@ -39,4 +49,5 @@ body {
 iframe {
     padding: 8px 12px;
     width: 100%;
+    display: block;
 }

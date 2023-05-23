@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".AddReview">
+
+    <EditText
+        android:id="@+id/add_review_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Title"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:inputType="textMultiLine"
+        android:background="@drawable/solid_btn"
+        android:lines="2"
+        android:maxLines="3"
+        android:minLines="2"
+        android:scrollbars="vertical"
+        />
+
+    <EditText
+        android:id="@+id/add_review_description"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:background="@drawable/solid_btn"
+        android:hint="Description"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rating_container"
+        android:inputType="textMultiLine"
+        android:textAlignment="textStart"
+        android:maxLines="15"
+        android:minLines="7"
+        android:scrollbars="vertical" />
+
+    <LinearLayout
+        android:id="@+id/rating_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_review_title" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Rating"
+            android:layout_marginTop="4dp"
+            android:textSize="21sp" />
+        <RatingBar
+            android:id="@+id/add_review_rating"
+            style="@android:style/Widget.Material.RatingBar.Indicator"
+            android:isIndicator="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:numStars="5"
+            android:stepSize="1"
+            android:progressBackgroundTint="@color/gray"
+            android:progressTint="@color/golden"
+            android:backgroundTint="@color/gray" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/review_add_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:gravity="center"
+        android:text="Submit"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/solid_btn"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_review_description" />
+</androidx.constraintlayout.widget.ConstraintLayout>

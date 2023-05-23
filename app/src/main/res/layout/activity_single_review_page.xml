@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SingleReviewPage"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    >
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:background="@drawable/solid_btn_light"
+       android:padding="7dp"
+       >
+     <TextView
+         android:id="@+id/single_review_reviewer"
+         android:background="#068EAF"
+         android:layout_width="match_parent"
+         android:padding="9dp"
+         android:layout_height="wrap_content"
+         android:textSize="17sp"
+         android:text="foisal"
+         android:textStyle="bold"
+         android:textColor="#FFFFFF"
+         />
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="40dp"
+         android:gravity="center_vertical"
+         >
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Rating"
+           android:textSize="15sp"
+           android:layout_marginEnd="10dp"
+           />
+       <RatingBar
+           android:id="@+id/single_review_rating"
+           style="@style/Widget.AppCompat.RatingBar.Small"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:numStars="5"
+           android:progressBackgroundTint="@color/gray"
+           android:progressTint="@color/golden"
+           android:rating="3.5"
+           />
+     </LinearLayout>
+     <TextView
+
+         android:id="@+id/single_review_date"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:textSize="13sp"
+         android:text="Date:"
+         />
+     <TextView
+
+         android:id="@+id/single_review_title"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:textSize="23sp"
+         android:paddingBottom="7dp"
+         android:textStyle="bold"
+         android:textColor="@color/black"
+         android:background="#E6E6E6"
+         android:text="Title:"
+         />
+     <TextView
+
+         android:id="@+id/single_review_description"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:padding="4dp"
+         android:paddingTop="7dp"
+         android:background="#DADADA"
+         android:textSize="16sp"
+
+         android:text="Description:"
+         />
+
+   </LinearLayout>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="12dp"
+       >
+
+     <LinearLayout
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="12dp"
+         android:gravity="center"
+         android:orientation="horizontal">
+
+       <ImageButton
+           android:id="@+id/likebtn"
+           android:layout_width="fill_parent"
+           android:layout_height="24dp"
+           android:layout_marginRight="5dp"
+           android:padding="9dp"
+           android:background="@android:color/transparent"
+           app:srcCompat="@drawable/icon_like" />
+
+       <TextView
+           android:id="@+id/single_review_like"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginRight="5dp"
+           android:text="100" />
+
+
+
+     </LinearLayout>
+
+     <ImageButton
+         android:id="@+id/review_message_btn"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="16dp"
+         android:layout_marginTop="12dp"
+         android:background="@android:color/transparent"
+         app:srcCompat="@drawable/message" />
+
+   </LinearLayout>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:weightSum="10"
+       android:gravity="center"
+       android:layout_marginTop="10dp"
+       >
+     <EditText
+         android:padding="7dp"
+         android:id="@+id/single_review_add_comment"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="@drawable/solid_btn"
+         android:inputType="textMultiLine"
+         android:minLines="4"
+         android:maxLines="4"
+         android:layout_weight="2"
+         android:layout_marginEnd="10dp"
+         />
+     <Button
+         android:id="@+id/single_review_add_comment_btn"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="@drawable/solid_btn"
+         android:textColor="@color/black"
+         android:layout_weight="8"
+         android:text="Post"
+         />
+   </LinearLayout>
+   <LinearLayout
+       android:layout_marginTop="15dp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+     <androidx.recyclerview.widget.RecyclerView
+         android:id="@+id/commnet_recycler"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:minHeight="450dp"
+         />
+
+   </LinearLayout>
+  </LinearLayout>

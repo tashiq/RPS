@@ -15,6 +15,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -42,7 +44,7 @@ public class GamePage extends AppCompatActivity {
     private boolean isCameraInitialized;
     TextView timeValue, compWinCount, playerWinCount;
     ImageButton switchBtn;
-    Button gameStartBtn;
+    Button gameStartBtn, gameCaptureBtn;
     SeekBar timeSeekbar;
     ImageView compHand;
     long value;
@@ -56,18 +58,21 @@ public class GamePage extends AppCompatActivity {
         timeValue = findViewById(R.id.time_value);
         switchBtn = findViewById(R.id.switch_btn);
         gameStartBtn = findViewById(R.id.game_start);
+        gameCaptureBtn = findViewById(R.id.game_capture);
+        gameStartBtn.setVisibility(View.GONE);
         timeSeekbar = findViewById(R.id.time_seekbar);
         compHand = findViewById(R.id.comp_hand);
+        handAnimation();
         value = timeSeekbar.getProgress();
         timeValue.setText(value + " ms");
 
         gameStartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(myCam!=null){
-                    myCam.takePicture(null, null, myCallBack);
-                    cameraStart();
-                }
+                cameraStart();
+                handAnimation();
+                gameStartBtn.setVisibility(View.GONE);
+                gameCaptureBtn.setVisibility(View.VISIBLE);
 //                new java.util.Timer().schedule(new TimerTask() {
 //                    @Override
 //                    public void run() {
@@ -77,6 +82,18 @@ public class GamePage extends AppCompatActivity {
 //                        }
 //                    }
 //                }, value);
+            }
+        });
+        gameCaptureBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(myCam!=null){
+                    myCam.takePicture(null, null, myCallBack);
+                    compHand.clearAnimation();
+                    gameStartBtn.setVisibility(View.VISIBLE);
+                    gameCaptureBtn.setVisibility(View.GONE);
+                }
             }
         });
         timeSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -102,7 +119,8 @@ public class GamePage extends AppCompatActivity {
         @Override
         public void onPictureTaken(byte[] data, Camera camera) {
             Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
-            int[] icons = {R.drawable.icon_rock, R.drawable.icon_paper, R.drawable.icon_scissor};
+            int[] icons = {R.drawable.icon_paper, R.drawable.icon_rock, R.drawable.icon_scissor};
+            String[] labels = {"Paper", "Rock", "Scissor"};
             Random rand = new Random();
             int index = rand.nextInt(icons.length);
 //            Toast.makeText(GamePage.this, "rand " + index, Toast.LENGTH_SHORT).show();
@@ -119,15 +137,16 @@ public class GamePage extends AppCompatActivity {
                 Model.Outputs outputs = model.process(image);
                 List<Category> probability = outputs.getProbabilityAsCategoryList();
 
-                int label = getMax(probability);
+                int predicted = getMax(probability);
+//                Log.i("label", "onPictureTaken: " + predicted + " " + probability.get(predicted));
                 compHand.setImageResource(icon_index);
-                int result = getWinner(label, index);
+                int result = getWinner(predicted, index);
                 int currentComp = Integer.parseInt((String) compWinCount.getText());
                 int currentPlayer = Integer.parseInt((String) playerWinCount.getText());
                 int nextComp  = result<0? currentComp + 1: currentComp;
-                Log.i("label", "onPictureTaken: " + nextComp);
                 int nextPlayer = result>0? currentPlayer + 1: currentPlayer;
-                Log.i("label", "onPictureTaken: " + nextPlayer);
+                Log.i("label", "Computer: " + labels[index]);
+                Log.i("label", "Player: " + probability.get(predicted).getLabel());
                 compWinCount.setText(String.valueOf(nextComp));
                 playerWinCount.setText(String.valueOf(nextPlayer));
                 model.close();
@@ -139,10 +158,11 @@ public class GamePage extends AppCompatActivity {
     };
 
     private int getWinner(int label, int index) {
-        if((label == 2 && index == 1) || (label == 1 && index == 2) || (label == 3 && index == 0)){
+        // paper, rock, scissor
+        if((label == 3 && index == 1) || (label == 1 && index == 2) || (label == 2 && index == 0)){
             return -1;
         }
-        if((label == 2 && index == 2) || (label == 1 && index == 0) || (label == 3 && index == 1)){
+        if((label == 2 && index == 2) || (label == 3 && index == 0) || (label == 1 && index == 1)){
             return 1;
         }
         else {
@@ -156,7 +176,7 @@ public class GamePage extends AppCompatActivity {
         int index = 0;
 
         for(int i=1; i<4; i++){
-            Log.i("label", "getMax: " + probability.get(i).getLabel());
+            Log.i("label", "getMax: " + probability.get(i).getLabel() + " index: " + i);
 //            Toast.makeText(this, item.getLabel()+item.getLabel().length(), Toast.LENGTH_SHORT).show();
             if(probability.get(i).getScore()>max){
                 max = probability.get(i).getScore();
@@ -165,7 +185,13 @@ public class GamePage extends AppCompatActivity {
         }
         return index;
     }
-
+    private void handAnimation(){
+        compHand.setImageResource(R.drawable.icon_rock);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.hand_move_anim);
+        compHand.setRotation(-20f);
+        animation.setRepeatCount(Animation.INFINITE);
+        compHand.startAnimation(animation);
+    }
     @Override
     protected void onResume() {
         super.onResume();

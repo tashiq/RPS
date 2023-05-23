@@ -73,7 +73,6 @@
             android:layout_marginBottom="5dp"
             android:gravity="center"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@id/name_box"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -98,7 +97,7 @@
                 <TextView
                     android:id="@+id/profile_name"
                     android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="5dp"
                     android:layout_weight="9"
                     android:gravity="center_vertical"
@@ -142,9 +141,9 @@
                 <ImageButton
                     android:id="@+id/name_check"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#00000000"
+                    android:background="#61111111"
                     android:src="@drawable/icon_check" />
             </LinearLayout>
         </LinearLayout>
@@ -156,7 +155,6 @@
             android:layout_marginBottom="5dp"
             android:gravity="center"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@id/name_box"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -221,21 +219,118 @@
                 <ImageButton
                     android:id="@+id/email_check"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#00000000"
+                    android:background="#61111111"
                     android:src="@drawable/icon_check" />
             </LinearLayout>
         </LinearLayout>
 
 
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="fill_parent"
+                android:background="@drawable/input_curve_left"
+                android:gravity="center_vertical"
+                android:text="Country"
+                android:textColor="#050509"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:visibility="visible"
+                android:id="@+id/country_edit_container"
+                android:layout_width="200dp"
+                android:layout_height="fill_parent"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/input_curve_right"
+                android:gravity="center_vertical"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/profile_country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="9"
+                    android:gravity="center_vertical"
+                    android:textColor="#050509"
+                    android:textSize="13sp" />
+
+                <ImageButton
+                    android:id="@+id/country_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:src="@drawable/edit" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/country_check_container"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/input_curve_right"
+                android:gravity="center_vertical"
+                android:weightSum="10">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="9"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Division *"
+                        />
+                    <Spinner
+                        android:id="@+id/spinner_division_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="District *"
+                        />
+                    <Spinner
+                        android:id="@+id/spinner_district_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        />
+                </LinearLayout>
+                <ImageButton
+                    android:id="@+id/country_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#61111111"
+                    android:src="@drawable/icon_check" />
+            </LinearLayout>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginBottom="5dp"
             android:gravity="center"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@id/name_box"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -288,7 +383,11 @@
                 android:background="@drawable/input_curve_right"
                 android:gravity="center_vertical"
                 android:weightSum="10">
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/profile_phone_code2"
+                    />
                 <EditText
                     android:id="@+id/profile_phone_edit_text"
                     android:layout_width="wrap_content"
@@ -304,9 +403,9 @@
                 <ImageButton
                     android:id="@+id/phone_check"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#00000000"
+                    android:background="#61111111"
                     android:src="@drawable/icon_check" />
             </LinearLayout>
         </LinearLayout>
@@ -318,90 +417,6 @@
             android:layout_marginBottom="5dp"
             android:gravity="center"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@id/name_box"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="fill_parent"
-                android:background="@drawable/input_curve_left"
-                android:gravity="center_vertical"
-                android:text="Country"
-                android:textColor="#050509"
-                android:textSize="13sp" />
-
-            <LinearLayout
-                android:id="@+id/country_edit_container"
-                android:layout_width="200dp"
-                android:layout_height="fill_parent"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/input_curve_right"
-                android:gravity="center_vertical"
-                android:weightSum="10">
-
-                <TextView
-                    android:id="@+id/profile_country"
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:layout_marginStart="5dp"
-                    android:layout_weight="9"
-                    android:gravity="center_vertical"
-                    android:text="Bangladesh"
-                    android:textColor="#050509"
-                    android:textSize="13sp"
-                    app:layout_constraintStart_toEndOf="@+id/textView"
-                    app:layout_constraintTop_toBottomOf="@+id/register_image_container" />
-
-                <ImageButton
-                    android:id="@+id/country_edit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#00000000"
-                    android:src="@drawable/edit" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/country_check_container"
-                android:visibility="gone"
-                android:layout_width="200dp"
-                android:layout_height="fill_parent"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/input_curve_right"
-                android:gravity="center_vertical"
-                android:weightSum="10">
-
-                <EditText
-                    android:id="@+id/profile_country_edit_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="fill_parent"
-                    android:layout_marginStart="5dp"
-                    android:layout_weight="9"
-                    android:gravity="center_vertical"
-                    android:textColor="#050509"
-                    android:textSize="13sp"
-                    app:layout_constraintStart_toEndOf="@+id/textView"
-                    app:layout_constraintTop_toBottomOf="@+id/register_image_container" />
-
-                <ImageButton
-                    android:id="@+id/country_check"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#00000000"
-                    android:src="@drawable/icon_check" />
-            </LinearLayout>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginBottom="5dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@id/name_box"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -415,6 +430,7 @@
                 android:textSize="13sp" />
 
             <LinearLayout
+                android:visibility="visible"
                 android:id="@+id/dob_edit_container"
                 android:layout_width="200dp"
                 android:layout_height="fill_parent"
@@ -454,9 +470,15 @@
                 android:background="@drawable/input_curve_right"
                 android:gravity="center_vertical"
                 android:weightSum="10">
-
-                <EditText
-                    android:id="@+id/profile_dob_edit_text"
+                <ImageButton
+                    android:id="@+id/profile_calender_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/calender"
+                    android:background="#00000000"
+                    />
+                <TextView
+                    android:id="@+id/profile_dob_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_marginStart="5dp"
@@ -470,9 +492,9 @@
                 <ImageButton
                     android:id="@+id/dob_check"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="#00000000"
+                    android:background="#61111111"
                     android:src="@drawable/icon_check" />
             </LinearLayout>
         </LinearLayout>

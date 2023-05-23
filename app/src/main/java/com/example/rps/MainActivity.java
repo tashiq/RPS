@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     LinearLayout firstRow, secondRow;
     ImageButton loginBtn, profileBtn;
     SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,14 +51,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         firstRow = findViewById(R.id.home_page_item_first);
         secondRow = findViewById(R.id.home_page_item_second);
         profileBtn = findViewById(R.id.profile_main_btn);
+
         profileBtn.setOnClickListener(this);
         loginBtn = findViewById(R.id.login_main_activity);
         sharedPreferences = getSharedPreferences("User Details", MODE_PRIVATE);
-        if(sharedPreferences.contains("user_name")){
+        if (sharedPreferences.contains("user_name")) {
             loginBtn.setVisibility(View.GONE);
             profileBtn.setVisibility(View.VISIBLE);
-        }
-        else{
+        } else {
             profileBtn.setVisibility(View.GONE);
             loginBtn.setVisibility(View.VISIBLE);
         }
@@ -159,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.review_menu_item:
-                intent = new Intent(getApplicationContext(), ReviewPage.class);
+                intent = new Intent(getApplicationContext(), ReviewsPage.class);
                 startActivity(intent);
                 break;
             default:
@@ -207,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
             return;
         }
-        if(v.getId() == R.id.profile_main_btn){
+        if (v.getId() == R.id.profile_main_btn) {
             Intent intent = new Intent(getApplicationContext(), Profile.class);
             startActivity(intent);
             return;

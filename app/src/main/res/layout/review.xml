@@ -2,16 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/single_review_container"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
 
+    android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
-    android:background="@drawable/background_shadow_review"
+    android:background="@drawable/solid_btn_light"
     android:elevation="10dp"
     android:orientation="vertical"
     android:padding="10dp"
-    app:layout_goneMarginStart="10dp"
-    tools:context=".Tutorial">
+    app:layout_goneMarginStart="10dp">
 
     <TextView
         android:id="@+id/reviewer"
@@ -20,7 +20,8 @@
         android:layout_marginTop="10dp"
         android:text="Robbie Frylink"
         android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textSize="19sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -79,27 +80,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/review_description">
 
-        <ImageButton
+        <ToggleButton
             android:id="@+id/likebtn"
-            android:layout_width="fill_parent"
-            android:layout_height="24dp"
-            android:layout_marginRight="5dp"
-            android:background="@android:color/transparent"
-            app:srcCompat="@drawable/up_arrow" />
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@color/white"
+            android:textColor="@color/white"
+            android:padding="4dp"
+            android:layout_marginRight="5dp" />
 
         <TextView
             android:id="@+id/likecount"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:text="100" />
 
-        <ImageButton
+        <ToggleButton
             android:id="@+id/dislikebtn"
-            android:layout_width="fill_parent"
-            android:layout_height="24dp"
-            android:background="@android:color/transparent"
-            app:srcCompat="@drawable/down_arrow" />
+            android:background="@color/white"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:padding="4dp"
+            android:textColor="@color/white"
+            />
 
     </LinearLayout>
 
@@ -108,10 +112,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="47dp" />
+        app:layout_constraintGuide_begin="52dp" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/review_message_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
