@@ -56,6 +56,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 //        Log.i("babel", "onBindViewHolder: " +username);
         Cursor cursor = db.getReact(postId, username);
         int react = cursor.getInt(1);
+//        Log.i("babel", "onBindViewHolder: " + cursor.getColumnName(1));
         int reactCount = cursor.getInt(0);
 
         holder.reviewer.setText(allReview.get(position).getReviewer());
@@ -100,53 +101,49 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             holder.dislike_btn.setChecked(false);
             holder.dislike_btn.setButtonDrawable(R.drawable.icon_dislike);
         }
-        holder.like_btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        holder.like_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Database db = new Database(context);
-                if (isChecked) {
-                    holder.like_btn.setButtonDrawable(R.drawable.icon_like_active);
-                    int newLikes = Integer.parseInt(holder.like_count.getText().toString());
+            public void onClick(View view) {
+                if (holder.like_btn.isChecked()) {
+                    int current = Integer.valueOf(holder.like_count.getText().toString());
                     if (holder.dislike_btn.isChecked()) {
-                        holder.dislike_btn.setChecked(false);
-                        holder.dislike_btn.setButtonDrawable(R.drawable.icon_dislike);
-                        newLikes += 2;
-                    } else {
-                        newLikes += 1;
+                        current += 1;
                     }
-                    db.addReact(allReview.get(holder.getAdapterPosition()).getReview_id(), username, 1);
-
-                    holder.like_count.setText(newLikes + "");
+                    current += 1;
+                    holder.like_count.setText(String.valueOf(current));
+                    holder.dislike_btn.setButtonDrawable(R.drawable.dislike);
+                    holder.like_btn.setButtonDrawable(R.drawable.like_blue);
+                    holder.dislike_btn.setChecked(false);
+                    db.addReact(Integer.valueOf(allReview.get(position).getReview_id()),username, 1);
                 } else {
-                    int newLikes = likes - 1;
-                    holder.like_count.setText(newLikes + "");
-                    holder.like_btn.setButtonDrawable(R.drawable.icon_like);
-                    db.addReact(allReview.get(holder.getAdapterPosition()).getReview_id(), username, 0);
-
+                    int current = Integer.valueOf(holder.like_count.getText().toString()) - 1;
+                    holder.like_count.setText(current + "");
+                    holder.like_btn.setButtonDrawable(R.drawable.like);
+                    db.addReact(Integer.valueOf(allReview.get(position).getReview_id()), username, 0);
                 }
             }
         });
-        holder.dislike_btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        holder.dislike_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Database db = new Database(context);
-                if (isChecked) {
-                    int newLikes = Integer.parseInt(holder.like_count.getText().toString());
-                    holder.dislike_btn.setButtonDrawable(R.drawable.icon_dislike_active);
-                    if (holder.like_btn.isChecked()) {
-                        holder.like_btn.setChecked(false);
-                        holder.like_btn.setButtonDrawable(R.drawable.icon_like);
-                        newLikes -= 2;
-                    } else {
-                        newLikes -= 1;
+            public void onClick(View view) {
+                if (holder.dislike_btn.isChecked()) {
+                    int current = Integer.valueOf(holder.like_count.getText().toString());
+                    if (holder.like_btn.isChecked())
+                        current -= 2;
+                    else {
+                        current -= 1;
                     }
-                    db.addReact(allReview.get(holder.getAdapterPosition()).getReview_id(), username, -1);
-                    holder.like_count.setText(newLikes + "");
+                    holder.like_count.setText(current + "");
+                    holder.dislike_btn.setButtonDrawable(R.drawable.dislike_blue);
+                    holder.like_btn.setChecked(false);
+                    holder.like_btn.setButtonDrawable(R.drawable.like);
+                    db.addReact(Integer.valueOf(allReview.get(position).getReview_id()), username, -1);
                 } else {
-                    holder.dislike_btn.setButtonDrawable(R.drawable.icon_dislike);
-                    int newLikes = likes + 1;
-                    holder.like_count.setText(newLikes + "");
-                    db.addReact(allReview.get(holder.getAdapterPosition()).getReview_id(), username, 0);
+
+                    int current = Integer.valueOf(holder.like_count.getText().toString()) + 1;
+                    holder.like_count.setText(current + "");
+                    holder.dislike_btn.setButtonDrawable(R.drawable.dislike);
+                    db.addReact(Integer.valueOf(allReview.get(position).getReview_id()),username, 0);
                 }
             }
         });

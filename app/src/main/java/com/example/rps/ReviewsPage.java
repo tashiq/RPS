@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -23,13 +25,14 @@ public class ReviewsPage extends AppCompatActivity implements View.OnClickListen
     Database db;
     Button addReview, viewReview, nextBtn, prevBtn, one;
     Fragment fragment;
+    TextView avgRating;
     public Context mainContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reviews_page);
-
+        avgRating = findViewById(R.id.avg_rating);
         addReview = findViewById(R.id.write_review_btn);
         viewReview = findViewById(R.id.view_review_btn);
         nextBtn = findViewById(R.id.next_btn);
@@ -41,7 +44,9 @@ public class ReviewsPage extends AppCompatActivity implements View.OnClickListen
         addReview.setOnClickListener(this);
         viewReview.setOnClickListener(this);
         db = new Database(getApplicationContext());
-
+//        Toast.makeText(this, "" + db.avgRating(), Toast.LENGTH_SHORT).show();
+        double avg_rt = db.avgRating();
+        avgRating.setText("Average Rating: " + avg_rt + " (5)");
     }
 
     @Override
@@ -79,20 +84,20 @@ public class ReviewsPage extends AppCompatActivity implements View.OnClickListen
             int totalReview = db.reviewCount();
             Log.i("babel", "onClick: " + totalReview);
 
-                prevBtn.setEnabled(true);
-                one.setText(pageNo + "");
-                allReviews = db.getAllReviews(pageNo);
-                AllReviews ar = (AllReviews) getFragmentManager().findFragmentById(R.id.review_fragment);
-                ar.onUpdateContent(allReviews);
-            if((pageNo  ) * 10 > totalReview){
+            prevBtn.setEnabled(true);
+            one.setText(pageNo + "");
+            allReviews = db.getAllReviews(pageNo);
+            AllReviews ar = (AllReviews) getFragmentManager().findFragmentById(R.id.review_fragment);
+            ar.onUpdateContent(allReviews);
+            if ((pageNo) * 10 > totalReview) {
                 nextBtn.setEnabled(false);
             }
         }
-        if(v.getId() == R.id.prev_btn){
+        if (v.getId() == R.id.prev_btn) {
             ArrayList<Reviews> allReviews;
-            int pageNo = Integer.parseInt(one.getText().toString()) - 1 ;
+            int pageNo = Integer.parseInt(one.getText().toString()) - 1;
             nextBtn.setEnabled(true);
-            if(pageNo == 1) {
+            if (pageNo == 1) {
                 prevBtn.setEnabled(false);
             }
             one.setText(pageNo + "");

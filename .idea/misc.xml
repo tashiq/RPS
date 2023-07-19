@@ -20,6 +20,7 @@
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/drawable/input_curve.xml" value="0.169" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/drawable/input_curve_left.xml" value="0.1" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/drawable/input_curve_right.xml" value="0.1" />
+        <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/drawable/login.xml" value="0.112" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/drawable/profile_background.xml" value="0.1" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/drawable/round_border.xml" value="0.1" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/drawable/solid_btn.xml" value="0.1" />
@@ -33,7 +34,7 @@
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_register.xml" value="0.30687830687830686" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_review_page.xml" value="0.25" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_review_second.xml" value="0.1" />
-        <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_reviews_page.xml" value="0.22" />
+        <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_reviews_page.xml" value="0.2" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_settings_page.xml" value="0.16417272338606242" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_single_review.xml" value="0.22" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/activity_single_review_page.xml" value="0.25" />

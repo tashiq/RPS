@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class Database extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "Rock Paper Scissor";
-    private static int DATABASE_VERSION = 22;
+    private static int DATABASE_VERSION = 24;
     private Context context;
     private static final String SHARED_PREF_USER = "User Details";
     //    review table
@@ -102,11 +102,11 @@ public class Database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 //        Toast.makeText(context, "onCreate is called", Toast.LENGTH_SHORT).show();
         try {
-//            db.execSQL(create_review_table);
-//            db.execSQL(create_user_table);
+            db.execSQL(create_review_table);
+            db.execSQL(create_user_table);
             db.execSQL(create_comment_table);
             db.execSQL(create_react_table);
-//            Toast.makeText(context, "Database is created.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Database is created.", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             Toast.makeText(context, "Error: " + e, Toast.LENGTH_SHORT).show();
             Log.i("babel", "onCreate: " + e);
@@ -117,12 +117,29 @@ public class Database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
         try {
-//            db.execSQL("DROP TABLE IF EXISTS " + USER);
-//            db.execSQL("DROP TABLE IF EXISTS " + REVIEW);
+            db.execSQL("DROP TABLE IF EXISTS " + USER);
+            db.execSQL("DROP TABLE IF EXISTS " + REVIEW);
+            db.execSQL("DROP TABLE IF EXISTS " + REACT_TABLE);
+            db.execSQL("DROP TABLE IF EXISTS " + COMMENT_TABLE);
             Toast.makeText(context, "Table Dropped", Toast.LENGTH_SHORT).show();
             onCreate(db);
         } catch (Exception e) {
             Toast.makeText(context, "Failed to delete table.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public double avgRating() {
+        String query = "select avg(rating) from reviews";
+        SQLiteDatabase db = getReadableDatabase();
+        try {
+            Cursor c = db.rawQuery(query, null);
+            c.moveToFirst();
+//            Log.i("babel", "avgRating: " + c.getDouble(0));
+            return c.getDouble(0);
+
+        } catch (Exception e) {
+            Log.i("babel", "avgRating: " + e);
+            return -1.0f;
         }
     }
 
@@ -227,9 +244,11 @@ public class Database extends SQLiteOpenHelper {
 
 //        Toast.makeText(context, reviewCursor.getCount() + " reviews found", Toast.LENGTH_SHORT).show();
         try {
-            Cursor reviewCursor = db.rawQuery("SELECT * FROM " + REVIEW + " ORDER BY " + REVIEW_ID + " DESC" +
-                    " LIMIT 10 " +
-                    "OFFSET " + skip, null);
+            Cursor reviewCursor = db.rawQuery("SELECT * FROM " + REVIEW + " ORDER BY " + REVIEW_ID + " DESC"
+
+                    +" LIMIT 10 " +
+                    "OFFSET " + skip
+                    , null);
             if (reviewCursor.moveToFirst()) {
                 do {
                     String rating_temp, like_temp, dislike_temp;
@@ -271,13 +290,13 @@ public class Database extends SQLiteOpenHelper {
 
     public int reviewCount() {
         String query = "SELECT COUNT(*) FROM " + REVIEW;
-        try{
+        try {
             SQLiteDatabase db = this.getWritableDatabase();
             Cursor result = db.rawQuery(query, null);
-            if(result.moveToFirst()){
+            if (result.moveToFirst()) {
                 return result.getInt(0);
             }
-        }catch (Exception e ){
+        } catch (Exception e) {
             Log.i("babel", "reviewCount: " + e);
         }
         return 0;
@@ -343,7 +362,7 @@ public class Database extends SQLiteOpenHelper {
         return result.moveToFirst();
     }
 
-    public boolean loginValidation(String key, String password) {
+    public boolean loginValidation(String key, String password, boolean checked) {
         SQLiteDatabase db = this.getWritableDatabase();
         try {
             String getValidate = "SELECT * FROM " + USER
@@ -360,8 +379,9 @@ public class Database extends SQLiteOpenHelper {
                     String value = userCursor.getString(i);
                     editor.putString(name, value);
                 }
-
-                editor.commit();
+                Log.i("babel", "loginValidation: " + checked);
+                editor.putString("remember", checked + "");
+                editor.apply();
             }
             return userCursor.moveToFirst();
         } catch (Exception e) {

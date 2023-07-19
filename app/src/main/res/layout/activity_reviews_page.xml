@@ -8,7 +8,11 @@
     android:padding="10dp"
     android:weightSum="100"
     tools:context=".ReviewsPage">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,9 +40,20 @@
             android:layout_weight="1"
             android:background="@drawable/solid_btn"
             android:text="Write are review"
+            android:layout_marginLeft="10dp"
             android:textColor="#000" />
 
+
     </LinearLayout>
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/avg_rating"
+    android:textSize="19sp"
+    android:text="Hello world"
+    android:layout_marginBottom="10dp"
+    />
+</LinearLayout>
 
         <fragment
         android:id="@+id/review_fragment"

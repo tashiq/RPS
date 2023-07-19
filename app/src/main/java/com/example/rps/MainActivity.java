@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -39,11 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//
-//        DisplayMetrics display = new DisplayMetrics();
-//        getWindowManager().getDefaultDisplay().getMetrics(display);
-//        int height = display.heightPixels;
-//        int width = display.widthPixels;
+
+
 
         drawerLayout = findViewById(R.id.main_activity_drawerlayout);
         navigationView = findViewById(R.id.navigation_view_drawer);
@@ -91,8 +89,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         View settingsItem = settings.inflate(R.layout.home_page_items, secondRow, false);
         ImageView settingsIcon = settingsItem.findViewById(R.id.home_page_item_icon);
         TextView settingsText = settingsItem.findViewById(R.id.home_page_item_title);
-        settingsIcon.setImageResource(R.drawable.icon_settings_white);
-        settingsText.setText("Settings");
+        settingsIcon.setImageResource(R.drawable.review);
+        settingsText.setText("Reviews");
 
         tutorial = getLayoutInflater();
         View tutorialItem = tutorial.inflate(R.layout.home_page_items, secondRow, false);
@@ -119,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         settingsItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), SettingsPage.class);
+                Intent i = new Intent(getApplicationContext(), ReviewsPage.class);
                 startActivity(i);
             }
         });
@@ -216,4 +214,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+
+
 }
