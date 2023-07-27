@@ -26,6 +26,10 @@
             android:id="@+id/review_menu_item"
             android:icon="@drawable/icon_review"
             android:title="Reviews" />
+        <item
+            android:id="@+id/api_menu_item"
+            android:icon="@drawable/icon_review"
+            android:title="Users" />
 
     </group>
 

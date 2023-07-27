@@ -5,12 +5,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class API {
     private static Retrofit retrofit;
-    private static final String BaseUrl = "";
-
-    public static APIinterface getRetrofit() {
-        if(retrofit == null){
+    private static final String BaseUrl = "https://jsonplaceholder.typicode.com/";
+    public static Retrofit getRetrofit() {
+        if (retrofit == null) {
             retrofit = new Retrofit.Builder().baseUrl(BaseUrl).addConverterFactory(GsonConverterFactory.create()).build();
         }
-        return retrofit.create(APIinterface.class);
+        return retrofit;
     }
 }

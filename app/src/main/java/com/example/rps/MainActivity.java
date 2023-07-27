@@ -162,6 +162,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(getApplicationContext(), ReviewsPage.class);
                 startActivity(intent);
                 break;
+            case R.id.api_menu_item:
+                intent = new Intent(getApplicationContext(), SettingsPage.class);
+                startActivity(intent);
+                break;
             default:
                 break;
 

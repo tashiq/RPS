@@ -6,6 +6,7 @@
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/drawable/background_round.xml" value="0.169" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/drawable/background_shadow_review.xml" value="0.1015" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/drawable/background_top_round.xml" value="0.1" />
+        <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/drawable/border.xml" value="0.16" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/drawable/button.xml" value="0.169" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/drawable/button_clicked.xml" value="0.169" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/drawable/button_curve.xml" value="0.128" />
@@ -53,6 +54,7 @@
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/navigation.xml" value="0.1" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/navigation_header.xml" value="0.1" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/review.xml" value="0.5" />
+        <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/single_user_item.xml" value="0.22" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/layout/spinner_layout.xml" value="0.1" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/menu/home_menu.xml" value="0.25" />
         <entry key="..\:/Users/faisa/AndroidStudioProjects/RPS/app/src/main/res/menu/rps_menu.xml" value="0.2" />

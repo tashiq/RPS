@@ -21,12 +21,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class ReviewsPage extends AppCompatActivity implements View.OnClickListener {
-    RecyclerView reviewRecycler;
     Database db;
     Button addReview, viewReview, nextBtn, prevBtn, one;
     Fragment fragment;
     TextView avgRating;
-    public Context mainContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
